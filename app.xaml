@@ -1,0 +1,74 @@
+﻿<Window x:Class="app"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hostManagement"
+        mc:Ignorable="d"
+        Title="hostManagement" Height="450" Width="800"
+        Background="white"
+        >
+    <Grid>
+
+        <Grid.Resources>
+            <Style x:Key="MaterialButtonStyle" TargetType="Button">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,1">
+                            <GradientStop Offset="1" Color="#E524D46F"/>
+                            <GradientStop Offset="0" Color="#E500BEE2"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Padding" Value="10,0" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      TextBlock.FontWeight="Bold" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" >
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1">
+                                    <GradientStop Offset="1" Color="#FF24D46F"/>
+                                    <GradientStop Offset="0" Color="#FF00BEE2"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" >
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1">
+                                    <GradientStop Offset="1" Color="#FF24D43F"/>
+                                    <GradientStop Offset="0" Color="#FF008AE2"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel RenderTransformOrigin="0,0.5" HorizontalAlignment="Left" Width="150">
+            <Button Content="Home" Click="goWelcome" Style="{StaticResource MaterialButtonStyle}"/>
+            <Button Content="Sites" Click="goSites" Style="{StaticResource MaterialButtonStyle}"/>
+            <Button Content="Settings" Click="goSettings" Style="{StaticResource MaterialButtonStyle}"/>
+        </StackPanel>
+        <Frame x:Name="pageView" Margin="150,0,0,0" NavigationUIVisibility="Hidden" Source="/Pages/Welcome.xaml"/>
+
+    </Grid>
+</Window>
